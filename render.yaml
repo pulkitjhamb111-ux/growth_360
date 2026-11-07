@@ -3,7 +3,6 @@ services:
     name: growth360
     runtime: docker
     plan: starter
-    region: ohio
     healthCheckPath: /api/health
     autoDeploy: true
     envVars:
@@ -21,6 +20,10 @@ services:
         sync: false
       - key: DATAFORSEO_PASSWORD
         sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-6-astra
     disk:
       name: growth360-data
       mountPath: /var/data

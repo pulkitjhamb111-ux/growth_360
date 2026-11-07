@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: growth360
+    runtime: docker
+    plan: starter
+    region: ohio
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: GROWTH360_ADMIN_TOKEN
+        generateValue: true
+      - key: GROWTH360_DB
+        value: /var/data/growth360.db
+      - key: ANALYZE_PER_MINUTE
+        value: "3"
+      - key: PAGESPEED_API_KEY
+        sync: false
+      - key: DATAFORSEO_LOGIN
+        sync: false
+      - key: DATAFORSEO_PASSWORD
+        sync: false
+    disk:
+      name: growth360-data
+      mountPath: /var/data
+      sizeGB: 1
